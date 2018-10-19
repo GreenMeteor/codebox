@@ -1,7 +1,7 @@
 {
     "id": "codebox",
     "name": "Codebox",
-    "description": "Allows you to use HTML snippets to your sidebar.",
+    "description": "Allows the use of HTML snippets on your sidebar.",
     "keywords": ["codebox"],
     "version": "1.0.0",
     "humhub": {
