@@ -16,6 +16,7 @@ class CodeboxFrame extends \humhub\components\Widget
     public function run()
     {
         return Yii::$app->settings->get('htmlCode');
+        return $this->render('codeboxframe', []);
     }
 
 }
