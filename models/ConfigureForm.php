@@ -53,9 +53,7 @@ class ConfigureForm extends \yii\base\Model
      */
     public function save()
     {
-        $settingsManager = Yii::$app->settings;
-        $settingsManager->set('htmlCode', $this->htmlCode);
-
+        Yii::$app->getModule('codebox')->settings->set('htmlCode', $this->htmlCode);
         return true;
     }
 
