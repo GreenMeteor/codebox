@@ -1,13 +1,8 @@
-[![](resources/gamejoltlogo.png)](https://gamejolt.com/)
-
-## [HumHub](https://www.humhub.org/en) Gamejolt Module
-
-Adds a sidebar widget to the Dashboard.
-
+## [HumHub](https://www.humhub.org/en) Codebox Module
+Allows you to use HTML snippets to your sidebar.
+> Note: Do not use this module within production sites it is still under development!
 ## [Documentation](/docs/README.md)
-> Note: Gamejolt is an external service that provides the widget that is placed within your HumHub's sidebar.
 
 ### __Product Distributors:__
 [@GreenMeteor](https://github.com/GreenMeteor)
 
-> Note: Notice: contributions can be found [here](https://github.com/GreenMeteor/humhub-gamejolt-module/blob/master/.github/CONTRIBUTORS.md).
