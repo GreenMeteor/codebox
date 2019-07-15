@@ -1,6 +1,7 @@
 <?php
 
 use humhub\libs\Html;
+use yii\widgets\ActiveForm;
 use humhub\widgets\PanelMenu;
 
 \humhub\modules\codebox\Assets::register($this);
