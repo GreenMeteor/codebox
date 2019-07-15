@@ -4,14 +4,15 @@ namespace humhub\modules\codebox;
 
 use Yii;
 use yii\helpers\Url;
-use humhub\modules\codebox\widgets\CodeboxFrame;
 use yii\base\BaseObject;
 use humhub\models\Setting;
+use humhub\modules\codebox\Assets;
+use humhub\modules\codebox\widgets\CodeboxFrame;
 
 class Events extends BaseObject
 {
 
-    public static function onAdminMenuInit(\yii\base\Event $event)
+    public static function onAdminMenuInit($event)
     {
         $event->sender->addItem([
             'label' => Yii::t('CodeboxModule.base', 'Codebox Settings'),
