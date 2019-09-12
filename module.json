@@ -9,7 +9,7 @@
     },
     "keywords": ["codebox", "module"],
     "screenshots": ["resources/Screenshot_1.png", "resources/Screenshot_2.png"],
-	"homepage": "https://github.com/GreenMeteor",
+    "homepage": "https://github.com/GreenMeteor",
     "authors": [
         {
             "name": "Green Meteor",
