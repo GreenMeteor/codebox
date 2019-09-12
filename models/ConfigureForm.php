@@ -40,6 +40,9 @@ class ConfigureForm extends \yii\base\Model
         ];
     }
 
+    /**
+     * @inheritdoc
+     */
     public function loadSettings()
     {
         $this->htmlCode = Yii::$app->getModule('codebox')->settings->get('htmlCode');
@@ -47,9 +50,7 @@ class ConfigureForm extends \yii\base\Model
     }
 
     /**
-     * Saves the form
-     *
-     * @return boolean
+     * @inheritdoc
      */
     public function save()
     {

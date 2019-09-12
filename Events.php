@@ -24,7 +24,7 @@ class Events extends BaseObject
         ]);
     }
 
-public static function addCodeboxFrame($event)
+    public static function addCodeboxFrame($event)
     {
         if (Yii::$app->user->isGuest) {
             return;

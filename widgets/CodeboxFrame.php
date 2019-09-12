@@ -10,13 +10,16 @@ use Yii;
 class CodeboxFrame extends \humhub\components\Widget
 {
 
+
+    public $contentContainer;
+
     /**
      * @inheritdoc
      */
     public function run()
     {
-        return Yii::$app->settings->get('htmlCode');
-        return $this->render('codeboxframe', []);
+        $htmlCode = Yii::$app->getModule('codebox')->getHtmlCode();
+        return $this->render('codeboxframe', ['htmlCode' => $htmlCode]);
     }
 
 }

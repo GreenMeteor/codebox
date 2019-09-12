@@ -1,7 +1,6 @@
 <?php
 
 use humhub\libs\Html;
-use yii\widgets\ActiveForm;
 use humhub\widgets\PanelMenu;
 
 \humhub\modules\codebox\Assets::register($this);
@@ -14,11 +13,9 @@ use humhub\widgets\PanelMenu;
   </div>
   <div class="panel-body">
 
-<?php $form = ActiveForm::begin(['id' => 'configure-form']); ?>
-        <div class="form-group">
-            <?= $form->field($model, 'htmlCode'); ?>
-        </div>
+<?= Html::beginTag('div') ?>
+<?= $htmlCode ?>
+<?= Html::endTag('div'); ?>
 
-        <?php ActiveForm::end(); ?>
 </div>
 </div>
