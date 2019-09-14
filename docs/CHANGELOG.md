@@ -1,4 +1,5 @@
 # Changelogs
 
-### 9/12/2019
+### Release 9/13/2019
+-Enh: Ability to use custom $title
 - internal release
