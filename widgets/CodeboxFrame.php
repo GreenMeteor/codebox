@@ -18,8 +18,12 @@ class CodeboxFrame extends \humhub\components\Widget
      */
     public function run()
     {
+
+        $title = Yii::$app->getModule('codebox')->getTitle();
+
         $htmlCode = Yii::$app->getModule('codebox')->getHtmlCode();
-        return $this->render('codeboxframe', ['htmlCode' => $htmlCode]);
+
+        return $this->render('codeboxframe', ['title' => $title, 'htmlCode' => $htmlCode]);
     }
 
 }

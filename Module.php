@@ -19,6 +19,15 @@ class Module extends \humhub\components\Module
         return Url::to(['/codebox/admin']);
     }
 
+    public function getTitle()
+    {
+        $title = $this->settings->get('title');
+        if (empty($title)) {
+            return '';
+        }
+        return $title;
+    }
+
     public function getHtmlCode()
     {
         $htmlCode = $this->settings->get('htmlCode');

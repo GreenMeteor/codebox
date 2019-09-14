@@ -11,6 +11,7 @@ use yii\helpers\Html;
 
 <?php $form = ActiveForm::begin(['id' => 'configure-form']); ?>
 <div class="form-group">
+    <?= $form->field($model, 'title')->textarea(['rows' => '1']); ?>
     <?= $form->field($model, 'htmlCode')->textarea(['rows' => '8']); ?>
 </div>
 <hr>
