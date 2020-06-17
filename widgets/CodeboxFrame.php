@@ -10,7 +10,6 @@ use Yii;
 class CodeboxFrame extends \humhub\components\Widget
 {
 
-
     public $contentContainer;
 
     /**
@@ -22,6 +21,10 @@ class CodeboxFrame extends \humhub\components\Widget
         $title = Yii::$app->getModule('codebox')->getTitle();
 
         $htmlCode = Yii::$app->getModule('codebox')->getHtmlCode();
+
+        if (!$title || !$htmlCode) {
+            return '';
+        }
 
         return $this->render('codeboxframe', ['title' => $title, 'htmlCode' => $htmlCode]);
     }
