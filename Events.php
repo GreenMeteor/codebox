@@ -6,8 +6,6 @@ use Yii;
 use yii\helpers\Url;
 use yii\base\BaseObject;
 use humhub\models\Setting;
-use humhub\modules\codebox\Assets;
-use humhub\modules\codebox\widgets\CodeboxFrame;
 
 class Events extends BaseObject
 {
@@ -29,8 +27,8 @@ class Events extends BaseObject
         if (Yii::$app->user->isGuest) {
             return;
         }
-        $event->sender->view->registerAssetBundle(Assets::class);
-        $event->sender->addWidget(CodeboxFrame::class, [], [
+
+        $event->sender->addWidget(widgets\CodeboxFrame::class, [], [
             'sortOrder' => Setting::Get('timeout', 'codebox')
         ]);
     }
