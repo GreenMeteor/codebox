@@ -6,6 +6,7 @@ use Yii;
 use yii\helpers\Url;
 use yii\base\BaseObject;
 use humhub\models\Setting;
+use humhub\modules\ui\icon\widgets\Icon;
 
 class Events extends BaseObject
 {
@@ -16,9 +17,9 @@ class Events extends BaseObject
             'label' => Yii::t('CodeboxModule.base', 'Codebox Settings'),
             'url' => Url::toRoute('/codebox/admin/index'),
             'group' => 'settings',
-            'icon' => '<i class="fa fa-code"></i>',
+            'icon' => Icon::get('code'),
             'isActive' => Yii::$app->controller->module && Yii::$app->controller->module->id == 'codebox' && Yii::$app->controller->id == 'admin',
-            'sortOrder' => 650
+            'sortOrder' => 650,
         ]);
     }
 
@@ -26,10 +27,10 @@ class Events extends BaseObject
     {
         if (Yii::$app->user->isGuest) {
             return;
+        } else {
+            Yii::$app->user;
         }
 
-        $event->sender->addWidget(widgets\CodeboxFrame::class, [], [
-            'sortOrder' => Setting::Get('timeout', 'codebox')
-        ]);
+        $event->sender->addWidget(widgets\CodeboxFrame::class, [], ['sortOrder' => 100]);
     }
 }
