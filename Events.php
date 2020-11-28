@@ -19,7 +19,7 @@ class Events extends BaseObject
             'group' => 'settings',
             'icon' => Icon::get('code'),
             'isActive' => Yii::$app->controller->module && Yii::$app->controller->module->id == 'codebox' && Yii::$app->controller->id == 'admin',
-            'sortOrder' => 650,
+            'sortOrder' => 600,
         ]);
     }
 
@@ -31,6 +31,6 @@ class Events extends BaseObject
             Yii::$app->user;
         }
 
-        $event->sender->addWidget(widgets\CodeboxFrame::class, [], ['sortOrder' => 100]);
+        $event->sender->addWidget(widgets\CodeboxFrame::class, [], ['sortOrder' => Yii::$app->getModule('codebox')->settings->get('sortOrder')]);
     }
 }
