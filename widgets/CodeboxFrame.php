@@ -3,11 +3,12 @@
 namespace humhub\modules\codebox\widgets;
 
 use Yii;
+use humhub\components\Widget;
 
 /**
  * CodeboxFrame adds HTML snippet code to all layouts extended by config.php
  */
-class CodeboxFrame extends \humhub\components\Widget
+class CodeboxFrame extends Widget
 {
 
     public $contentContainer;
@@ -20,13 +21,16 @@ class CodeboxFrame extends \humhub\components\Widget
 
         $title = Yii::$app->getModule('codebox')->getTitle();
 
+        $sortOrder = Yii::$app->getModule('codebox')->getOrder();
+
+
         $htmlCode = Yii::$app->getModule('codebox')->getHtmlCode();
 
-        if (!$title || !$htmlCode) {
+        if (!$title || !$htmlCode || !$sortOrder) {
             return '';
         }
 
-        return $this->render('codeboxframe', ['title' => $title, 'htmlCode' => $htmlCode]);
+        return $this->render('codeboxframe', ['title' => $title, 'htmlCode' => $htmlCode, $sortOrder => 'sortOrder']);
     }
 
 }
