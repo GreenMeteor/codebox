@@ -29,6 +29,7 @@ class Events extends BaseObject
             'icon' => Icon::get('code'),
             'isActive' => Yii::$app->controller->module && Yii::$app->controller->module->id == 'codebox' && Yii::$app->controller->id == 'admin',
             'sortOrder' => 600,
+            'isVisible' => true,
         ]));
     }
 
