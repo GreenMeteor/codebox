@@ -1,4 +1,6 @@
 # Changelogs
+### Release v1.0.2 (*TBA*)
+- Enh: Implement AdminMenu permission restriction
 
 ### Release v1.0.1 (*11/28/2020*)
 - Enh: Make sortOrder Configurable
