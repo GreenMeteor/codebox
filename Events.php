@@ -5,7 +5,6 @@ namespace humhub\modules\codebox;
 use Yii;
 use yii\helpers\Url;
 use yii\base\BaseObject;
-use humhub\models\Setting;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\ui\icon\widgets\Icon;
 use humhub\modules\admin\widgets\AdminMenu;
