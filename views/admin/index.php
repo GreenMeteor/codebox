@@ -1,5 +1,6 @@
 <?php
 
+use humhub\modules\ui\form\widgets\SortOrderField;
 use yii\bootstrap\ActiveForm;
 use yii\helpers\Html;
 
@@ -14,7 +15,7 @@ use yii\helpers\Html;
 <div class="form-group">
     <?= $form->field($model, 'title')->textInput(['class' => 'form-control', 'placeholder' => 'Title', 'disabled' => false])->label(true) ?>
     <?= $form->field($model, 'htmlCode')->textarea(['rows' => '8']); ?>
-    <?= $form->field($model, 'sortOrder')->textInput(['class' => 'form-control', 'placeholder' => 'Select a sort order...', 'disabled' => false])->label(true) ?>
+    <?= $form->field($model, 'sortOrder')->widget(SortOrderField::class) ?>
 </div>
 <hr>
 
