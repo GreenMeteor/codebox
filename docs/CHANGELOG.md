@@ -1,5 +1,5 @@
 # Changelogs
-### Release v1.0.2 (*12/18/2020*)
+### Release v1.0.2 (*12/19/2020*)
 - Enh: Implement AdminMenu permission restriction
 - Enh: minVersion update
 - Enh: Remove unused $publishOptions
