@@ -27,7 +27,7 @@ class ConfigureForm extends \yii\base\Model
         return [
             ['title', 'string'],
             ['htmlCode', 'string'],
-            ['sortOrder', 'string'],
+            ['sortOrder', 'integer'],
         ];
     }
 
@@ -37,6 +37,7 @@ class ConfigureForm extends \yii\base\Model
     public function attributeLabels()
     {
         return [
+            'title' => Yii::t('CodeboxModule.base', 'Title:'),
             'htmlCode' => Yii::t('CodeboxModule.base', 'Codebox HTML code snippet:'),
         ];
     }
@@ -47,24 +48,30 @@ class ConfigureForm extends \yii\base\Model
     public function attributeHints()
     {
         return [
-            'htmlCode' => Yii::t('CodeboxModule.base', 'e.g. <code><php? ?></code>'),
+            'htmlCode' => Yii::t('CodeboxModule.base', 'e.g. <code>Code Here</code>, also for inline scripts use {code}.', ['code' => '<code>&lt;script nonce={{nonce}}&gt;</code>']),
         ];
     }
 
     public function loadSettings()
     {
-        $this->title = Yii::$app->getModule('codebox')->settings->get('title');
-        $this->htmlCode = Yii::$app->getModule('codebox')->settings->get('htmlCode');
-        $this->sortOrder = Yii::$app->getModule('codebox')->settings->get('sortOrder');
+        $module = Yii::$app->getModule('codebox');
+        $settings = $module->settings;
+
+        $this->title = $settings->get('title');
+        $this->htmlCode = $settings->get('htmlCode');
+        $this->sortOrder = $settings->get('sortOrder');
 
         return true;
     }
 
     public function save()
     {
-        Yii::$app->getModule('codebox')->settings->set('title', $this->title);
-        Yii::$app->getModule('codebox')->settings->set('htmlCode', $this->htmlCode);
-        Yii::$app->getModule('codebox')->settings->set('sortOrder', $this->sortOrder);
+        $module = Yii::$app->getModule('codebox');
+        $settings = $module->settings;
+
+        $settings->set('title', $this->title);
+        $settings->set('htmlCode', $this->htmlCode);
+        $settings->set('sortOrder', $this->sortOrder);
 
         return true;
     }
