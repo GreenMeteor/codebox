@@ -7,7 +7,7 @@
         "minVersion": "1.9.0"
     },
     "keywords": ["codebox"],
-    "screenshots": ["resources/Screenshot_1.png", "resources/Screenshot_2.png"]
+    "screenshots": ["resources/Screenshot_1.png", "resources/Screenshot_2.png"],
     "homepage": "https://github.com/GreenMeteor/codebox/",
     "issues": "https://github.com/GreenMeteor/codebox/issues",
     "authors": [
