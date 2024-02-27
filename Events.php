@@ -34,12 +34,15 @@ class Events extends BaseObject
 
     public static function addCodeboxFrame($event)
     {
+        $module = Yii::$app->getModule('codebox');
+        $settings = $module->settings;
+
         if (Yii::$app->user->isGuest) {
             return;
         } else {
             Yii::$app->user;
         }
 
-        $event->sender->addWidget(widgets\CodeboxFrame::class, [], ['sortOrder' => Yii::$app->getModule('codebox')->settings->get('sortOrder')]);
+        $event->sender->addWidget(widgets\CodeboxFrame::class, [], ['sortOrder' => $settings->get('sortOrder')]);
     }
 }
