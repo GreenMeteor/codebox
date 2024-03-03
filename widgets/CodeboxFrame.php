@@ -19,12 +19,13 @@ class CodeboxFrame extends Widget
      */
     public function run()
     {
+        $module = Yii::$app->getModule('codebox');
 
-        $title = Yii::$app->getModule('codebox')->getTitle();
+        $title = $module->getTitle();
 
-        $sortOrder = Yii::$app->getModule('codebox')->getOrder();
+        $sortOrder = $module->getOrder();
 
-        $htmlCode = Yii::$app->getModule('codebox')->getHtmlCode();
+        $htmlCode = $module->getHtmlCode();
 
         if (!$title || !$htmlCode || !$sortOrder) {
             return '';
