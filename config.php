@@ -14,4 +14,3 @@ return [
         ['class' => AdminMenu::class, 'event' => AdminMenu::EVENT_INIT, 'callback' => ['humhub\modules\codebox\Events', 'onAdminMenuInit']]
     ]
 ];
-?>
