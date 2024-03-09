@@ -4,6 +4,7 @@ namespace humhub\modules\codebox;
 
 use Yii;
 use yii\helpers\Url;
+use humhub\libs\Html;
 use humhub\components\Module as BaseModule;
 
 class Module extends BaseModule
@@ -31,11 +32,16 @@ class Module extends BaseModule
     public function getHtmlCode()
     {
         $htmlCode = $this->settings->get('htmlCode');
+
         if (empty($htmlCode)) {
             return '';
         }
-        return $htmlCode;
+
+        $htmlNonce = str_replace('nonce={{nonce}}', Html::nonce(), $htmlCode);
+
+        return $htmlNonce;
     }
+
 
     public function getOrder()
     {
