@@ -38,7 +38,7 @@ class Module extends BaseModule
         }
 
         $nonce = Html::nonce();
-        $htmlNonce = preg_replace('/<script([^>]*)>/', '<script$1 nonce="' . $nonce . '">', $htmlCode);
+        $htmlNonce = preg_replace('/<script([^>]*)>/', '<script$1 ' . $nonce . '>', $htmlCode);
 
         return $htmlNonce;
     }
