@@ -3,6 +3,7 @@
 namespace humhub\modules\codebox\widgets;
 
 use Yii;
+use humhub\libs\Html;
 use humhub\components\Widget;
 
 /**
@@ -10,9 +11,6 @@ use humhub\components\Widget;
  */
 class CodeboxFrame extends Widget
 {
-
-    public $contentContainer;
-
     /**
      * @inheritdoc
      */
@@ -30,7 +28,16 @@ class CodeboxFrame extends Widget
             return '';
         }
 
-        return $this->render('codeboxframe', ['title' => $title, 'htmlCode' => $htmlCode, $sortOrder => 'sortOrder']);
+        // Generate nonce attribute
+        $nonce = Html::nonce();
+
+        // Check if {{nonce}} placeholder exists in htmlCode
+        if (strpos($htmlCode, 'nonce={{nonce}}') !== false) {
+            // Replace {{nonce}} with the generated nonce value
+            $htmlCode = str_replace('nonce={{nonce}}', $nonce, $htmlCode);
+        }
+
+        return $this->render('codeboxframe', ['title' => $title, 'htmlCode' => $htmlCode, 'sortOrder' => $sortOrder, 'nonce' => $nonce]);
     }
 
 }
