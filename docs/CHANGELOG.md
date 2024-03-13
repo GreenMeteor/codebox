@@ -1,5 +1,8 @@
 # Changelogs
 
+### Release v1.1.1 (*3/13/2024*)
+- Fix: Nonce
+
 ### Release v1.1.0 (*2/27/2024*)
 - Enh: Use of CodeMirrorInputWidget implemented
 - Enh: Encode Title
