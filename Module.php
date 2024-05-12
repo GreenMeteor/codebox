@@ -4,49 +4,81 @@ namespace humhub\modules\codebox;
 
 use Yii;
 use yii\helpers\Url;
-use humhub\libs\Html;
 use humhub\components\Module as BaseModule;
+use humhub\modules\codebox\models\ConfigureForm;
 
 class Module extends BaseModule
 {
-
     public $resourcesPath = 'resources';
 
     /**
-     * @inheritdoc
+     * Returns the URL to the configuration page.
+     * 
+     * @return string the URL to the configuration page
      */
     public function getConfigUrl()
     {
         return Url::to(['/codebox/admin']);
     }
 
+    /**
+     * Retrieves all settings from the database.
+     * 
+     * @return array the settings
+     */
+    protected function getSettings()
+    {
+        $models = ConfigureForm::find()->all();
+        $settings = [];
+
+        foreach ($models as $model) {
+            $settings[$model->getAttribute('name')] = $model->getAttribute('value');
+        }
+
+        return $settings;
+    }
+
+    /**
+     * Retrieves a setting from the database.
+     * 
+     * @param string $name the name of the setting attribute
+     * @param mixed $defaultValue the default value if the setting is not found
+     * @return mixed the value of the setting
+     */
+    protected function getSetting($name, $defaultValue = null)
+    {
+        $settings = $this->getSettings();
+
+        return isset($settings[$name]) ? $settings[$name] : $defaultValue;
+    }
+
+    /**
+     * Retrieves the title from the module settings.
+     * 
+     * @return string the title
+     */
     public function getTitle()
     {
-        $title = $this->settings->get('title');
-        if (empty($title)) {
-            return '';
-        }
-        return $title;
+        return $this->getSetting('title');
     }
 
+    /**
+     * Retrieves the HTML code snippet from the module settings.
+     * 
+     * @return string the HTML code snippet
+     */
     public function getHtmlCode()
     {
-        $htmlCode = $this->settings->get('htmlCode');
-
-        if (empty($htmlCode)) {
-            return '';
-        }
-
-        return $htmlCode;
+        return $this->getSetting('htmlCode');
     }
 
-
+    /**
+     * Retrieves the sort order from the module settings.
+     * 
+     * @return int the sort order
+     */
     public function getOrder()
     {
-        $sortOrder = $this->settings->get('sortOrder');
-        if (empty($sortOrder)) {
-            return '100';
-        }
-        return $sortOrder;
+        return $this->getSetting('sortOrder', 100);
     }
 }
