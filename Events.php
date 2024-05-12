@@ -8,8 +8,9 @@ use yii\base\BaseObject;
 use humhub\modules\ui\menu\MenuLink;
 use humhub\modules\ui\icon\widgets\Icon;
 use humhub\modules\admin\widgets\AdminMenu;
-use humhub\modules\admin\permissions\ManageModules;
+use humhub\modules\codebox\widgets\CodeboxFrame;
 use humhub\modules\codebox\models\ConfigureForm;
+use humhub\modules\admin\permissions\ManageModules;
 
 class Events extends BaseObject
 {
@@ -39,13 +40,13 @@ class Events extends BaseObject
         $module = Yii::$app->getModule('codebox');
 
         // Check if the module is enabled
-        if ($module !== null && $module->isEnabled) {
+        if ($module !== null) {
             // Retrieve the settings from the database
             $entries = ConfigureForm::find()->asArray()->all();
 
             // Add the CodeboxFrame widget with the entries
             $event->sender->addWidget(
-                \humhub\modules\codebox\widgets\CodeboxFrame::class,
+                CodeboxFrame::class,
                 ['entries' => $entries],
                 ['sortOrder' => $module->getOrder()]
             );
