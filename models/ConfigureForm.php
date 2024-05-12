@@ -3,77 +3,47 @@
 namespace humhub\modules\codebox\models;
 
 use Yii;
+use humhub\components\ActiveRecord;
 
 /**
- * ConfigureForm defines the configurable fields.
+ * Codebox ActiveRecord model.
+ *
+ * @property int $id
+ * @property string $title
+ * @property string $htmlCode
+ * @property int $sortOrder
  */
-class ConfigureForm extends \yii\base\Model
+class ConfigureForm extends ActiveRecord
 {
-
-    public $title;
-
-    public $htmlCode;
-
     /**
-     * Sort the order of the widget
+     * {@inheritdoc}
      */
-    public $sortOrder;
+    public static function tableName()
+    {
+        return 'codebox';
+    }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function rules()
     {
         return [
-            ['title', 'string'],
-            ['htmlCode', 'string'],
+            [['title', 'htmlCode'], 'string'],
             ['sortOrder', 'integer'],
         ];
     }
 
     /**
-     * @inheritdoc
+     * {@inheritdoc}
      */
     public function attributeLabels()
     {
         return [
+            'id' => Yii::t('CodeboxModule.base', 'ID'),
             'title' => Yii::t('CodeboxModule.base', 'Title:'),
             'htmlCode' => Yii::t('CodeboxModule.base', 'Codebox HTML code snippet:'),
+            'sortOrder' => Yii::t('CodeboxModule.base', 'Sort Order'),
         ];
     }
-
-    /**
-     * @inheritdoc
-     */
-    public function attributeHints()
-    {
-        return [
-            'htmlCode' => Yii::t('CodeboxModule.base', 'e.g. <code>Code Here</code>, also for inline scripts use {code}.', ['code' => '<code>&lt;script nonce={{nonce}}&gt;</code>']),
-        ];
-    }
-
-    public function loadSettings()
-    {
-        $module = Yii::$app->getModule('codebox');
-        $settings = $module->settings;
-
-        $this->title = $settings->get('title');
-        $this->htmlCode = $settings->get('htmlCode');
-        $this->sortOrder = $settings->get('sortOrder');
-
-        return true;
-    }
-
-    public function save()
-    {
-        $module = Yii::$app->getModule('codebox');
-        $settings = $module->settings;
-
-        $settings->set('title', $this->title);
-        $settings->set('htmlCode', $this->htmlCode);
-        $settings->set('sortOrder', $this->sortOrder);
-
-        return true;
-    }
-
 }

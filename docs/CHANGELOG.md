@@ -1,5 +1,9 @@
 # Changelogs
 
+### Release v1.2.0 (*5/12/2024*)
+- Support adding multiple codeboxes
+- Refactor complete module
+
 ### Release v1.1.1 (*3/13/2024*)
 - Fix: Nonce
 

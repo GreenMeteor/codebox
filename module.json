@@ -1,10 +1,10 @@
 {
     "id": "codebox",
-    "version": "1.1.1",
+    "version": "1.2.0",
     "name": "Codebox",
-    "description": "Allows the use of HTML snippets on your sidebar.",
+    "description": "Allows you to add and use HTML snippets on your Dashboard sidebar.",
     "humhub": {
-        "minVersion": "1.9.0"
+        "minVersion": "1.16.0"
     },
     "keywords": ["codebox"],
     "screenshots": ["resources/Screenshot_1.png", "resources/Screenshot_2.png"],
