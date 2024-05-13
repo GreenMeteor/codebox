@@ -39,7 +39,7 @@ class Events extends BaseObject
         $module = Yii::$app->getModule('codebox');
 
         // Check if the module is enabled
-        if ($module !== null && $module->isEnabled) {
+        if ($module !== null) {
             // Retrieve the settings from the database
             $entries = ConfigureForm::find()->asArray()->all();
 
