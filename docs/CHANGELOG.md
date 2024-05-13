@@ -1,4 +1,6 @@
 # Changelogs
+### Release v1.2.1 (*5/13/2024*)
+- Fix: Unknown Property: humhub\modules\codebox\Module::isEnabled
 
 ### Release v1.2.0 (*5/12/2024*)
 - Support adding multiple codeboxes
