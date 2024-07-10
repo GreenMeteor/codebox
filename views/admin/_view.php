@@ -1,10 +1,11 @@
 <?php
 
-use yii\helpers\Html;
 use yii\helpers\Url;
+use yii\helpers\Html;
+use humhub\modules\codebox\components\HtmlParser;
 
 /* @var $this yii\web\View */
-/* @var $model app\models\ConfigureForm */
+/* @var $model \humhub\modules\codebox\models\ConfigureForm */
 
 // Generate unique IDs for panel menu and panel content
 $panelMenuId = 'panel-menu-' . $model->id;
@@ -16,30 +17,34 @@ $(document).ready(function() {
     
     $('#panel-heading-$model->id').hover(
         function() {
-            clearTimeout(timer); // Clear the collapse timer
+            clearTimeout(timer);
             $('#panel-content-$model->id').collapse('show');
         },
         function() {
             timer = setTimeout(function() {
                 $('#panel-content-$model->id').collapse('hide');
-            }, 500); // Adjust the delay time as needed (in milliseconds)
+            }, 500);
         }
     );
     
     // Keep the panel content open when hovering over it
     $('#panel-content-$model->id').hover(
         function() {
-            clearTimeout(timer); // Clear the collapse timer
+            clearTimeout(timer);
         },
         function() {
             timer = setTimeout(function() {
                 $('#panel-content-$model->id').collapse('hide');
-            }, 500); // Adjust the delay time as needed (in milliseconds)
+            }, 500);
         }
     );
 });
 JS;
 $this->registerJs($js);
+
+// Instantiate HtmlParser and render the HTML code
+$htmlParser = new HtmlParser($model->htmlCode);
+$renderedHtml = $htmlParser->render();
 
 ?>
 <div class="col-md-6">
@@ -48,7 +53,7 @@ $this->registerJs($js);
             <?= Html::encode($model->title) ?>
         </div>
         <div class="panel-body collapse" id="<?= $panelContentId ?>">
-            <?= Html::encode($model->htmlCode) ?>
+            <?= $renderedHtml ?>
             <br>
             <div class="form-group">
                 <?= Html::a(Yii::t('CodeboxModule.base', 'Update'), ['update', 'id' => $model->id], ['class' => 'btn btn-primary btn-sm', 'data-toggle' => 'modal', 'data-target' => '#globalModal']); ?>
