@@ -1,4 +1,9 @@
 # Changelogs
+
+### Release v1.2.2 (*7/10/2024*)
+- Enh: New HTML Parser class
+- Enh: Display render of HTML widgets in settings
+
 ### Release v1.2.1 (*5/13/2024*)
 - Fix: Unknown Property: humhub\modules\codebox\Module::isEnabled
 
