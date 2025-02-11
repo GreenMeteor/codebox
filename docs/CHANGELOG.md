@@ -1,5 +1,8 @@
 # Changelogs
 
+### Release v1.2.3 (**TBA**)
+- Fix: Sort Order
+
 ### Release v1.2.2 (*7/10/2024*)
 - Enh: New HTML Parser class
 - Enh: Display render of HTML widgets in settings
