@@ -32,9 +32,10 @@ class Module extends BaseModule
         $settings = [];
 
         foreach ($models as $model) {
-            $settings[$model->getAttribute('name')] = $model->getAttribute('value');
+            $settings['title'] = $model->title;
+            $settings['htmlCode'] = $model->htmlCode;
+            $settings['sortOrder'] = $model->sortOrder;
         }
-
         return $settings;
     }
 
