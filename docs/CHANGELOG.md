@@ -1,6 +1,6 @@
 # Changelogs
 
-### Release v1.2.3 (**TBA**)
+### Release v1.2.3 (**2/11/2025**)
 - Fix: Sort Order
 
 ### Release v1.2.2 (*7/10/2024*)
