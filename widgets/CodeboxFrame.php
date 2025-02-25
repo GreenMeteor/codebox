@@ -22,10 +22,11 @@ class CodeboxFrame extends Widget
      */
     public function run()
     {
-        // Initialize entries as an empty array if it's null
         $entries = is_array($this->entries) ? $this->entries : [];
 
-        $module = Yii::$app->getModule('codebox');
+        usort($entries, function ($a, $b) {
+            return ($a['sortOrder'] ?? 0) <=> ($b['sortOrder'] ?? 0);
+        });
 
         $output = '';
 
@@ -34,20 +35,16 @@ class CodeboxFrame extends Widget
             $htmlCode = isset($entry['htmlCode']) ? $entry['htmlCode'] : '';
             $sortOrder = isset($entry['sortOrder']) ? $entry['sortOrder'] : '';
 
-            if (!$title || !$htmlCode || !$sortOrder) {
+            if (!$title || !$htmlCode || $sortOrder === '') {
                 continue;
             }
 
-            // Generate nonce attribute
             $nonce = Html::nonce();
 
-            // Replace {{nonce}} with the generated nonce value
             $htmlCode = str_replace('nonce={{nonce}}', 'nonce=' . $nonce, $htmlCode);
 
-            // Define unique ID for each panel
             $panelId = 'panel-codebox-' . $index;
 
-            // Construct HTML output with unique ID for each panel
             $output .= '<div class="panel panel-default panel-codebox" id="' . $panelId . '">';
             $output .= PanelMenu::widget(['id' => $panelId]);
             $output .= '<div class="panel-heading"><strong>' . $title . '</strong></div>';
