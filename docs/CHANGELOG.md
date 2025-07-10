@@ -1,5 +1,8 @@
 # Changelogs
 
+### Release v1.3.0 (**TBA**)
+- Enh: Add more options other than Html widgets
+
 ### Release v1.2.3 (**2/11/2025**)
 - Fix: Sort Order
 
