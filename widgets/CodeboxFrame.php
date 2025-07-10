@@ -9,6 +9,7 @@ use humhub\components\Widget;
 
 /**
  * CodeboxFrame adds HTML snippet code to all layouts extended by config.php
+ * Enhanced with PHP/Yii2 support
  */
 class CodeboxFrame extends Widget
 {
@@ -75,6 +76,7 @@ class CodeboxFrame extends Widget
             $output .= '<div class="panel-heading">';
             $output .= '<div class="pull-left"><strong>' . $title . '</strong></div>';
             $output .= '<div class="pull-right">';
+            //$output .= '<span class="label ' . $this->getCodeTypeLabelClass($codeType) . '">' . $codeTypeLabel . '</span>';
             $output .= '</div>';
             $output .= '<div class="clearfix"></div>';
             $output .= '</div>';

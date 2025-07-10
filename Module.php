@@ -12,13 +12,13 @@ class Module extends BaseModule
     public $resourcesPath = 'resources';
 
     /**
-     * Returns the URL to the configuration page.
+     * Overrides the default getConfigUrl() method to open a modal instead.
      * 
-     * @return string the URL to the configuration page
+     * @return string JavaScript code to open the modal
      */
     public function getConfigUrl()
     {
-        return Url::to(['/codebox/admin']);
+        return Url::to(['/codebox/admin/index']);
     }
 
     /**
@@ -32,15 +32,18 @@ class Module extends BaseModule
         $settings = [];
 
         foreach ($models as $model) {
-            $settings['title'] = $model->title;
-            $settings['htmlCode'] = $model->htmlCode;
-            $settings['sortOrder'] = $model->sortOrder;
+            $settings[] = [
+                'title' => $model->title,
+                'htmlCode' => $model->htmlCode,
+                'sortOrder' => $model->sortOrder,
+            ];
         }
-        return $settings;
+
+        return $settings ?: [];
     }
 
     /**
-     * Retrieves a setting from the database.
+     * Retrieves a specific setting from the database.
      * 
      * @param string $name the name of the setting attribute
      * @param mixed $defaultValue the default value if the setting is not found
@@ -50,13 +53,17 @@ class Module extends BaseModule
     {
         $settings = $this->getSettings();
 
-        return isset($settings[$name]) ? $settings[$name] : $defaultValue;
+        if (!empty($settings) && isset($settings[0][$name])) {
+            return $settings[0][$name];
+        }
+
+        return Yii::$app->settings->get('codebox.' . $name, $defaultValue);
     }
 
     /**
      * Retrieves the title from the module settings.
      * 
-     * @return string the title
+     * @return string|null the title
      */
     public function getTitle()
     {
@@ -66,7 +73,7 @@ class Module extends BaseModule
     /**
      * Retrieves the HTML code snippet from the module settings.
      * 
-     * @return string the HTML code snippet
+     * @return string|null the HTML code snippet
      */
     public function getHtmlCode()
     {
@@ -80,6 +87,6 @@ class Module extends BaseModule
      */
     public function getOrder()
     {
-        return $this->getSetting('sortOrder', 100);
+        return (int) $this->getSetting('sortOrder', 100);
     }
 }

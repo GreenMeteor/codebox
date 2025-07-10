@@ -16,7 +16,6 @@ class HtmlParser extends Component
 
     public function render()
     {
-        // Render the HTML content as-is
         return $this->html;
     }
 }
